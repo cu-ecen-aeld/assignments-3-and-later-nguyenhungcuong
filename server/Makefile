@@ -13,10 +13,10 @@ endif
 all: $(TARGET)
 
 $(TARGET): aesdsocket.o
-	$(CC) aesdsocket.o -o $(TARGET)
+	$(CC) aesdsocket.o -lpthread -o $(TARGET)
 
 aesdsocket.o: aesdsocket.c
-	$(CC) -c aesdsocket.c -Wall -Werror
+	$(CC) -c aesdsocket.c -Wall -Werror 
 
 # removes the application and all .o files
 clean:
