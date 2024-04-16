@@ -1,22 +1,18 @@
 # Makefile for Assignment 5 Part 1
 
-CC = gcc
-TARGET = aesdsocket
-
-# check if CROSS_COMPILER is set or not
-ifdef CROSS_COMPILE
-    CC := $(CROSS_COMPILE)gcc
-endif
-
+CC ?= $(CROSS_COMPILE)gcc
+CFLAGS ?= -g -Wall -Werror 
+TARGET ?= aesdsocket
+LDFLAGS ?= -lpthread -lrt
 
 # build application
 all: $(TARGET)
 
 $(TARGET): aesdsocket.o
-	$(CC) aesdsocket.o -lpthread -o $(TARGET)
+	$(CC) $(LDFLAGS) aesdsocket.o -o $(TARGET)
 
 aesdsocket.o: aesdsocket.c
-	$(CC) -c aesdsocket.c -Wall -Werror 
+	$(CC) $(CFLAGS) -c aesdsocket.c
 
 # removes the application and all .o files
 clean:
