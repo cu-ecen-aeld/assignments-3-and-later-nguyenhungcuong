@@ -99,7 +99,7 @@ void *thread_timestamp(void *input_param)
 
     syslog(LOG_DEBUG, "thread_timestamp exit\n");
 
-    pthread_exit(NULL);
+    return NULL;
 }
 
 void thread_cleanup_handler(void *arg)
@@ -233,7 +233,7 @@ void *thread_connection(void *input_param)
     // free param
     free(thread_param);
 
-    pthread_exit(NULL);
+    return NULL;
 }
 
 int main(int argc, char* argv[])
